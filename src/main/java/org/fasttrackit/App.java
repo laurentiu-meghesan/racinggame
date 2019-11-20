@@ -80,6 +80,9 @@ public class App
 //        Car car4 = null;
 //        System.out.println(car4.name);
 
+//        System.out.println("Modulo example: ");
+//        System.out.println(4%2);
+//        System.out.println(4%3==0);
 
     }
 }
