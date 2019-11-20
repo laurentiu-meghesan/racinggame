@@ -10,4 +10,28 @@ public class Vehicle {
     double travelDistance;
     boolean running;
 
+    public double accelerate(double speed, double durationInHours)
+    {
+
+        System.out.println(name + "is accelerating with " + speed + "for "+ durationInHours+ "h");
+
+        double distance = speed*durationInHours;
+        travelDistance = distance + travelDistance;
+        //same result as the statement above
+//        travelDistance+=distance;
+
+        System.out.println("Total travel distance " + travelDistance);
+
+        double usedFuel = distance*mileage/100;
+
+        System.out.println("Used fuel " + usedFuel);
+
+        fuelLevel -= usedFuel;
+
+        System.out.println("Remaining fuel level " + fuelLevel);
+
+        return distance;
+
+    }
+
 }
