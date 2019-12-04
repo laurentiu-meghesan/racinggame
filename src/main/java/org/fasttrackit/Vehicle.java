@@ -25,6 +25,7 @@ public class Vehicle {
         return accelerate (speed, 1);
     }
 
+
     public double accelerate(double speed, double durationInHours) {
             double mileageMultiplier=1;
 
@@ -74,6 +75,8 @@ public class Vehicle {
         System.out.println("Remaining fuel level " + fuelLevel);
 
         return distance;
+
+
     }
 
     public String getName() {
@@ -130,5 +133,18 @@ public class Vehicle {
 
     public void setRunning(boolean running) {
         this.running = running;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", mileage=" + mileage +
+                ", maxSpeed=" + maxSpeed +
+                ", fuelLevel=" + fuelLevel +
+                ", travelDistance=" + travelDistance +
+                ", running=" + running +
+                '}';
     }
 }

@@ -7,11 +7,17 @@ public class App
 
     public static void main( String[] args )
     {
-
         System.out.println( "Welcome to the racing game" );
 
         Game game = new Game();
         game.start();
+
+        JokerVehicle joker = new JokerVehicle();
+        joker.setName("Joker");
+        joker.setFuelLevel(80);
+        joker.accelerate(60,1);
+
+        System.out.println("Joker`s total distance: "+ joker.getTravelDistance());
 
         Car carWithDefaulEngine = new Car();
 
@@ -53,6 +59,7 @@ public class App
         car2.getColor ();
 
         //concatenation
+        System.out.println(carReference);
         System.out.println("First car name: " + carReference.getName());
         System.out.println(carReference.getColor());
         System.out.println(carReference.getMileage());
