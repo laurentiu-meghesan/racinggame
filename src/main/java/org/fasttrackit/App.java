@@ -12,7 +12,7 @@ public class App
         Game game = new Game();
         game.start();
 
-        //method implementation taken from object`s class
+ /*       //method implementation taken from object`s class
         //not from the variable`s class
         Vehicle joker = new JokerVehicle();
         joker.setName("Joker");
@@ -113,6 +113,8 @@ public class App
         System.out.println("Total vehicle count from vehicle 1: " + vehicle1.totalCount);
         System.out.println("Total vehicle count from vehicle 2: " + vehicle2.totalCount);
         System.out.println("Total vehicle count from vehicle class " + Vehicle.totalCount);
+
+  */
 
 
     }
