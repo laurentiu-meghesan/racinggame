@@ -79,6 +79,12 @@ public class Vehicle {
 
     }
 
+    //co-variant return type
+    @Override
+    public Vehicle clone(){
+        return new Vehicle();
+    }
+
     public String getName() {
         return name;
     }
