@@ -1,6 +1,7 @@
 package org.fasttrackit;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,7 +12,7 @@ public class Game {
     private List<Vehicle> competitors = new ArrayList<>();
 
 
-    public void start() {
+    public void start() throws Exception {
         System.out.println("Starting game...");
 
         initializeTracks();
@@ -40,14 +41,22 @@ public class Game {
         return scanner.nextDouble();
     }
 
-    private Track getSelectedTrackFromUser() {
+    private Track getSelectedTrackFromUser() throws Exception {
         System.out.println("Please select the circuit.");
         Scanner scanner = new Scanner(System.in);
-        int selectedTrackNumber = scanner.nextInt();
-        Track selectedTack = tracks[selectedTrackNumber - 1];
 
-        System.out.println("Selected track is " + selectedTack.getName());
-        return tracks[selectedTrackNumber];
+        try {
+            int selectedTrackNumber = scanner.nextInt();
+
+            Track selectedTrack = tracks[selectedTrackNumber - 1];
+
+            System.out.println("Selected track is " + selectedTrack.getName());
+            return selectedTrack;
+        } catch (InputMismatchException e) {
+            throw new RuntimeException("You have entered an invalid value.");
+        }catch (ArrayIndexOutOfBoundsException e){
+            throw new Exception("You have selected non existing track.");
+        }
     }
 
     private void initializeCompetitors() {
