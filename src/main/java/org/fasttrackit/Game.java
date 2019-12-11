@@ -10,6 +10,8 @@ public class Game {
 
     private Track[] tracks = new Track[3];
     private List<Vehicle> competitors = new ArrayList<>();
+    private boolean winnerNotKnown = true;
+    private int competitorsWithoutFuel = 0;
 
 
     public void start() throws Exception {
@@ -19,8 +21,17 @@ public class Game {
         displayTracks();
 
         Track selectedTrack = getSelectedTrackFromUser();
+
         initializeCompetitors();
 
+        while (winnerNotKnown && competitorsWithoutFuel < competitors.size()) {
+            System.out.println();
+            System.out.println("New round");
+            playOneRound(selectedTrack);
+        }
+    }
+
+    private void playOneRound(Track selectedTrack) {
         // enhanced for
         for (Vehicle vehicle : competitors) {
             System.out.println("It`s " + vehicle.getName() + "`s turn.");
@@ -28,9 +39,15 @@ public class Game {
 
             vehicle.accelerate(speed);
 
+
             if (vehicle.getTravelDistance() >= selectedTrack.getLength()) {
                 System.out.println("The winner is " + vehicle.getName() + "!");
+                winnerNotKnown = false;
                 break;
+            }
+
+            if (vehicle.getFuelLevel() <= 0) {
+                competitorsWithoutFuel++;
             }
         }
     }
@@ -61,9 +78,9 @@ public class Game {
             return selectedTrack;
         } catch (InputMismatchException e) {
             throw new RuntimeException("You have entered an invalid value.");
-        }catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             throw new Exception("You have selected non existing track.");
-        }finally {
+        } finally {
             System.out.println("Always executed.");
         }
     }
