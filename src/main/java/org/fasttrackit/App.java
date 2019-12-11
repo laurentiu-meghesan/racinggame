@@ -12,7 +12,7 @@ public class App
         Game game = new Game();
         game.start();
 
- /*       //method implementation taken from object`s class
+ /*     //method implementation taken from object`s class
         //not from the variable`s class
         Vehicle joker = new JokerVehicle();
         joker.setName("Joker");
